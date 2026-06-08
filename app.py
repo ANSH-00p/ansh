@@ -19,6 +19,11 @@ try:
 except LookupError:
     nltk.download('punkt_tab')
 
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
 # Use os.path to make it work on Render
 base_dir = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(base_dir, 'trained_modle.pkl')
