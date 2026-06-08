@@ -1,13 +1,23 @@
 import os
 import pickle
 import nltk
-nltk.download('punkt')
-nltk.download('punkt_tab')
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 import string
 
 import streamlit as st
+
+# Download NLTK data only once
+import nltk.data
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
+try:
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    nltk.download('punkt_tab')
 
 # Use os.path to make it work on Render
 base_dir = os.path.dirname(os.path.abspath(__file__))
